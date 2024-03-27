@@ -14,4 +14,4 @@ Assignment | Colab (recommended) | Offline |
 | ----- | ----- | ----- |
 | Assignment 1. Optimization-based controllers | [HW 1 colab] | [HW 1 offline] |
 
-[lecture 1 notes]:
+[lecture 1 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-1&branch=master

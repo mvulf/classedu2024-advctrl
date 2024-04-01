@@ -8,7 +8,7 @@ Lecture | Video | Materials |
 ## Seminars 
 Seminar | Video | Materials | 
 | ----- | ------ | ----- |
-| Seminar 1. Terminology | [seminar 1 vid] | [seminar 1 slides] |
+| Seminar 1. Regelum basic principles | [seminar 1 vid] | [seminar 1 slides] |
 
 ## Assignments
 Assignment | Colab (recommended) | Offline |
@@ -19,3 +19,6 @@ Assignment | Colab (recommended) | Offline |
 
 
 [lecture 1 vid]: https://dzen.ru/video/watch/660a9f59f6a00f699fba946a
+
+
+[seminar 1 vid]: https://dzen.ru/video/watch/660af5f79b4019737ac1e671

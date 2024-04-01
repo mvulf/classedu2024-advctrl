@@ -17,3 +17,6 @@ Assignment | Colab (recommended) | Offline |
 
 [lecture 1 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-1&branch=master
 [lecture 2 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-2&branch=master
+
+
+[lecture 2 vid]: https://dzen.ru/video/watch/660704cd2619a736fb415daa

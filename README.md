@@ -1,4 +1,4 @@
- [CLASS]:
+ [comment]: <class>
 
 # Advanced Control Methods 2024 
 ## Lectures

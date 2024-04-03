@@ -1,3 +1,4 @@
+<! -- CLASS -->
 # Advanced Control Methods 2024 
 ## Lectures
 Lecture | Video | Materials | 
@@ -18,6 +19,7 @@ Assignment | Colab (recommended) | Offline |
 
 [lecture 1 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-1&branch=master
 [lecture 2 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-2&branch=master
+[lecture 3 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-3&branch=master
 
 [lecture 1 vid]: https://dzen.ru/video/watch/660a9f59f6a00f699fba946a
 [lecture 2 vid]: https://dzen.ru/video/watch/660cba638529120e745a479c

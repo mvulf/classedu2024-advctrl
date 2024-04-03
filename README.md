@@ -3,7 +3,8 @@
 Lecture | Video | Materials | 
 | ----- |  ----- | ----- |
 | Lecture 1. Introduction to nonlinear dynamical systems | [lecture 1 vid] | [lecture 1 notes] |
-| Lecture 2. Fundamentals of Stability Theory | [lecture 2 vid] | [lecture 2 notes] |
+| Lecture 2. Fundamentals of stability theory | [lecture 2 vid] | [lecture 2 notes] |
+| Lecture 2. Adaptive control basics | [lecture 3 vid] | [lecture 3 notes] |
 
 ## Seminars 
 Seminar | Video | Materials | 
@@ -19,6 +20,8 @@ Assignment | Colab (recommended) | Offline |
 [lecture 2 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-2&branch=master
 
 [lecture 1 vid]: https://dzen.ru/video/watch/660a9f59f6a00f699fba946a
+[lecture 2 vid]: https://dzen.ru/video/watch/660cba638529120e745a479c
+[lecture 3 vid]: https://dzen.ru/video/watch/660cbb9c1039527997a50755
 
 
 [seminar 1 vid]: https://dzen.ru/video/watch/660af5f79b4019737ac1e671

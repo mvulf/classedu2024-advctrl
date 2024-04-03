@@ -24,7 +24,7 @@ Assignment | Colab (recommended) | Offline |
 
 [lecture 1 vid]: https://dzen.ru/video/watch/660a9f59f6a00f699fba946a
 [lecture 2 vid]: https://dzen.ru/video/watch/660cba638529120e745a479c
-[lecture 3 vid]:
+[lecture 3 vid]: https://dzen.ru/video/watch/660d37aa11e7b24e9e284f4a
 
 
 [seminar 1 vid]: https://dzen.ru/video/watch/660af5f79b4019737ac1e671

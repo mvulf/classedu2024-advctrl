@@ -1,6 +1,5 @@
-<! -- 
-CLASS
--->
+ %CLASS
+
 # Advanced Control Methods 2024 
 ## Lectures
 Lecture | Video | Materials | 

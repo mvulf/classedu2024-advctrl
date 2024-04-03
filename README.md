@@ -5,7 +5,7 @@ Lecture | Video | Materials |
 | ----- |  ----- | ----- |
 | Lecture 1. Introduction to nonlinear dynamical systems | [lecture 1 vid] | [lecture 1 notes] |
 | Lecture 2. Fundamentals of stability theory | [lecture 2 vid] | [lecture 2 notes] |
-| Lecture 2. Adaptive control basics | [lecture 3 vid] | [lecture 3 notes] |
+| Lecture 3. Adaptive control basics | [lecture 3 vid] | [lecture 3 notes] |
 
 ## Seminars 
 Seminar | Video | Materials | 

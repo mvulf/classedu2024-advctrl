@@ -1,4 +1,4 @@
- %CLASS
+ [CLASS]:
 
 # Advanced Control Methods 2024 
 ## Lectures

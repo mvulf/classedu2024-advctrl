@@ -232,6 +232,8 @@ Your objective is to swing up the pole using an energy-based controller and subs
 
 Refer to exercises 1 and 2 in [notes.pdf](./notes.pdf) for the theoretical background on energy-based controllers for cartpole swing-up.
 
+In [src/policy.py](./src/policy.py) find the CartPoleEnergyBased class and update it with the appropriate code.
+
 To initiate the swing-up procedure, use:
 
 ```shell

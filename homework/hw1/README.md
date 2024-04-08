@@ -1,11 +1,11 @@
 ## Homework 1 Overview
 
-The repository is designed for the "Advanced Control Methods-2024" course. It includes:
+The homework is designed for the "Advanced Control Methods-2024" course. It includes:
 
 - Demonstrative code for the [inverted pendulum system](https://regelum.aidynamic.io/systems/inv_pendulum/), its modified version with friction, and various controllers.
 - A set of [practical tasks](#practical-tasks) for students to implement.
 
-The controllers, all featuring an energy-based component for swing-up, transition to a PD regulator after the pendulum reaches a critical angle. The repository features the following energy-based controllers:
+The controllers, all featuring an energy-based component for swing-up, transition to a PD regulator after the pendulum reaches a critical angle. The homework features the following energy-based controllers:
 
 - Basic version without friction compensation.
 - Enhanced version with friction compensation.
@@ -28,7 +28,7 @@ Detailed task descriptions are available in the [Homework 1 assignments](#howewo
 
 ## Table of contents
 - [Getting started](#getting-started):  Instructions to launch the controllers on inverted pendulum system.
-- [Repo structure](#repo-structure): An overview of the repository's organization.
+- [Hw1 structure](#hw1-structure): An overview of the hw1's organization.
 - [Homework 1 assignments](#howework-1-assignments): Detailed descriptions of the homework assignments.
 
 
@@ -37,7 +37,7 @@ Detailed task descriptions are available in the [Homework 1 assignments](#howewo
 This section should be used in demo purposes, so you can get along how everything should work on the example of [inverted pendulum system](https://regelum.aidynamic.io/systems/inv_pendulum/). 
 Study the code, try to understand the insights of how everything is implemented and works.
 
-### Step 1: clone the repo install requirements
+### Step 1: clone the repo and install requirements
 
 Before installing the requirements, it is recommended to create a virtual environment for your project. And then run
 
@@ -140,7 +140,7 @@ python run.py \
 ## Hw1 structure
 
 - [`run.py`](./run.py): The main executable script.
-- [`src/`](./src/): Contains the source code of the repo.
+- [`src/`](./src/): Contains the source code of the hw1.
     - [`policy.py`](./src/policy.py): Implements the PD and energy-based policies for inverted pendulum and cartpole systems.
     - [`system.py`](./src/system.py): Implements the inverted pendulum system, the inverted pendulum system with friction and cartpole system.
 - [`presets/`](./presets/): Houses configuration files.
@@ -162,7 +162,7 @@ python run.py \
         - [`inv_pendulum_with_friction.yaml`](./presets/system/inv_pendulum_with_friction.yaml): Configuration for inverted pendulum system with friction.
         - [`inv_pendulum.yaml`](./presets/system/inv_pendulum.yaml): Configuration for inverted pendulum without friction.
 
-## Howework 1 assignments
+## Homework 1 assignments
 
 The following sections detail the assignments for Homework 1. 
 Each task involves coding, which must be enclosed within designated markers. 

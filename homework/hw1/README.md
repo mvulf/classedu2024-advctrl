@@ -37,12 +37,15 @@ Detailed task descriptions are available in the [Homework 1 assignments](#howewo
 This section should be used in demo purposes, so you can get along how everything should work on the example of [inverted pendulum system](https://regelum.aidynamic.io/systems/inv_pendulum/). 
 Study the code, try to understand the insights of how everything is implemented and works.
 
-### Step 1: install requirements
+### Step 1: clone the repo install requirements
 
-Before installing the repo, it is recommended to create a virtual environment for your project.
+Before installing the requirements, it is recommended to create a virtual environment for your project. And then run
 
 ```shell
-pip install -e .
+git clone https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl
+cd homework/hw1
+pip install -r requirements.txt
+code .
 ```
 
 ### Step 2: Run PD Regulator
@@ -134,7 +137,7 @@ python run.py \
 >
 > For the `--fps` parameter, you can select any suitable value to ensure a smooth experience (e.g., `--fps=2`, `--fps=10`, `--fps=20`, etc.).
 
-## Repo structure
+## Hw1 structure
 
 - [`run.py`](./run.py): The main executable script.
 - [`src/`](./src/): Contains the source code of the repo.

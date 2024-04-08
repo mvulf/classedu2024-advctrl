@@ -14,9 +14,9 @@ Seminar | Video | Materials |
 | Seminar 1. Regelum basic principles | [seminar 1 vid] | [seminar 1 slides] |
 
 ## Assignments
-Assignment | Colab (recommended) | Offline |
-| ----- | ----- | ----- |
-| Assignment 1. Optimization-based controllers | [HW 1 colab] | [HW 1 offline] |
+Assignment | Link |
+| ----- | ----- | 
+| Assignment 1. | [HW 1](./homework/hw1/README.md) |
 
 [lecture 1 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-1&branch=master
 [lecture 2 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-2&branch=master

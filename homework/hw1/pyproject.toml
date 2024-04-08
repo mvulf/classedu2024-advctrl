@@ -1,0 +1,21 @@
+[tool.poetry]
+package-mode = true
+name = "advctrl-2024-hw1"
+version = "0.1.0"
+description = "Homework 1 for Advanced Control Methods 2024 course"
+authors = ["abolychev <bolychev.anton@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+regelum-control = "=0.3.2"
+pytest = "=7.4.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

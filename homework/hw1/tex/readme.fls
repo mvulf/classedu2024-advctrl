@@ -1,9 +1,9 @@
-PWD /home/anton/regelum-paos/tex
+PWD /home/anton/classedu2024-advctrl/homework/hw1/tex
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/anton/regelum-paos/tex/readme.tex
+INPUT /home/anton/classedu2024-advctrl/homework/hw1/tex/readme.tex
 OUTPUT readme.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls

@@ -1,3 +1,4 @@
+*.tar.gz
 multirun
 regelum_data
 .python-version

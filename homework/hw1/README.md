@@ -247,3 +247,16 @@ pytest test.py::test_cartpole_swingup -v --disable-warnings
 ```
 
 Adhering to these instructions and successfully passing the tests will ensure your homework meets the course standards. Good luck!
+
+## Submission Guide
+
+Follow these simple steps to submit your homework:
+
+1. Execute bash prepare_for_submit.sh in your terminal. You'll get a `src-hw1.tar.gz` file.
+2. Visit our [Telegram bot](https://t.me/aida_att_bot).
+3. Type `/submit_hw1` in the chat and upload your `src-hw1.tar.gz` file.
+4. The bot will test your homework and provide a score.
+5. Happy with your score? Upload `src-hw1.tar.gz` to the LMS for official grading.
+6. Want to improve? Adjust your homework and resubmit with `/submit_hw1`.
+
+That's it! Good luck with your homework! 

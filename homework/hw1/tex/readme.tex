@@ -28,7 +28,7 @@ The dynamics of the cartpole system are governed by the following set of differe
     \begin{aligned}
         &\dot{\vartheta} =  \omega \\
         &\dot{x} = v_x \\
-        &\dot{\omega} =  \frac{g \sin{\vartheta} - \cos{\vartheta}(F + m_p l \omega^2 \sin{\vartheta})}{\frac{4l}{3}(m_c + m_p) - lm_p \cos^2{\vartheta}}\\
+        &\dot{\omega} =  \frac{g \sin{\vartheta}(m_c + m_p) - \cos{\vartheta}(F + m_p l \omega^2 \sin{\vartheta})}{\frac{4l}{3}(m_c + m_p) - lm_p \cos^2{\vartheta}}\\
         &\dot{v}_x = \frac{F + m_p l (\omega ^2 \sin{\vartheta} - \dot{\omega}   \cos{\vartheta})}{m_c + m_p}
     \end{aligned}
 \end{equation}

@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1712657367 "/home/anton/classedu2024-advctrl/homework/hw1/tex/readme.tex" "readme.pdf" "readme" 1712657367
+["pdflatex"] 1712740302 "/home/anton/classedu2024-advctrl/homework/hw1/tex/readme.tex" "readme.pdf" "readme" 1712740302
   "/etc/texmf/web2c/texmf.cnf" 1691401274 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/anton/classedu2024-advctrl/homework/hw1/tex/readme.tex" 1712657366 3286 544b51c9362ca72de1fdcc3ddc9939a8 ""
+  "/home/anton/classedu2024-advctrl/homework/hw1/tex/readme.tex" 1712740302 3297 ac13e2fe987076be3914da669413cc1f ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -78,8 +78,8 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1691404265 362444 d082a522277925383c40fd9e80e279fd ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1710474263 1435891 e9fc0c56cb8cb5258a76da283208c5d5 ""
   "preamble.tex" 1712595826 6554 b3a1ae7d37e3fc205a05dc9c3b2cf1cd ""
-  "readme.aux" 1712657367 528 2a4e123b8d869b7070e701ad6643144d "pdflatex"
-  "readme.tex" 1712657366 3286 544b51c9362ca72de1fdcc3ddc9939a8 ""
+  "readme.aux" 1712740302 528 2a4e123b8d869b7070e701ad6643144d "pdflatex"
+  "readme.tex" 1712740302 3297 ac13e2fe987076be3914da669413cc1f ""
   (generated)
   "readme.aux"
   "readme.log"

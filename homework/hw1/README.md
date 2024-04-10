@@ -252,7 +252,7 @@ Adhering to these instructions and successfully passing the tests will ensure yo
 
 Follow these simple steps to submit your homework:
 
-1. Execute bash prepare_for_submit.sh in your terminal. You'll get a `src-hw1.tar.gz` file.
+1. Execute `bash prepare_for_submit.sh` in your terminal. You'll get a `src-hw1.tar.gz` file.
 2. Visit our [Telegram bot](https://t.me/aida_att_bot).
 3. Type `/submit_hw1` in the chat and upload your `src-hw1.tar.gz` file.
 4. The bot will test your homework and provide a score.

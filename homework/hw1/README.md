@@ -233,7 +233,9 @@ The goal is to design an energy-based controller to swing up the pole, and then 
 Please consult exercises 1 and 2 in notes.pdf for a foundational understanding of energy-based controllers applied to the cartpole swing-up problem.
 
 The expected behavior of a well-implemented and tuned energy-based controller for the cartpole swing-up is depicted here:
+
 ![alt text](./gfx/image.png)
+
 By observing the system's behavior, you can identify the appropriate time to switch from the energy-based controller to the swing-up controller, which is typically when the pole angle becomes relatively small.
 
 In [src/policy.py](./src/policy.py) find the CartPoleEnergyBased class and update it with the appropriate code.

@@ -230,7 +230,7 @@ pytest test.py::test_cartpole_hold -v --disable-warnings
 
 The goal is to design an energy-based controller to swing up the pole, and then position the cart at the origin. Upon the pole nearing the vertical position, you may opt to switch to the PD controller from Task 2, either with a smooth transition or an immediate shift.
 
-Please consult exercises 1 and 2 in notes.pdf for a foundational understanding of energy-based controllers applied to the cartpole swing-up problem.
+Please consult exercises 1 and 2 in [notes.pdf](./notes.pdf) for a foundational understanding of energy-based controllers applied to the cartpole swing-up problem.
 
 The expected behavior of a well-implemented and tuned energy-based controller for the cartpole swing-up is depicted here:
 

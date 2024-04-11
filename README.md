@@ -32,7 +32,7 @@ Assignment | Link |
 [lecture 4 vid]: https://dzen.ru/video/watch/66143660abb34d38e299c444
 
 
-[seminar 1 material]: regelum.aidynamic.io/
+[seminar 1 material]: https://regelum.aidynamic.io/
 [seminar 3 material]: https://colab.research.google.com/drive/11spVxpwE0Drfp7I-ajW46_GZ1Zhc2Tvc?usp=sharing
 [seminar 4 material]: https://colab.research.google.com/drive/146gW1YCyW8pX7QQSex9tUJQiksyWdOs5?usp=sharing
 

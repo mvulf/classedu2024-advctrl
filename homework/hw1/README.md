@@ -236,7 +236,7 @@ The expected behavior of a well-implemented and tuned energy-based controller fo
 
 ![alt text](./gfx/image.png)
 
-By observing the system's behavior, you can identify the appropriate time to switch from the energy-based controller to the swing-up controller, which is typically when the pole angle becomes relatively small.
+By observing the system's behavior, you can identify the appropriate time to switch from the energy-based controller to the PD regulator, which is typically when the pole angle becomes relatively small.
 
 In [src/policy.py](./src/policy.py) find the CartPoleEnergyBased class and update it with the appropriate code.
 

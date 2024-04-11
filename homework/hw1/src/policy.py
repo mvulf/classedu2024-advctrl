@@ -200,7 +200,7 @@ class CartPolePD(Policy):
         x_dot_clipped = np.clip(x_dot, -1.0, 1.0)
 
         action = (
-            theta * self.pd_coefs[0]
+            np.sin(theta) * self.pd_coefs[0]
             + x_clipped * self.pd_coefs[1]
             + omega * self.pd_coefs[2]
             + x_dot_clipped * self.pd_coefs[3]
@@ -255,7 +255,7 @@ class CartPoleEnergyBased(Policy):
         # YOUR CODE GOES HERE #
 
         ...
-        
+
         action = ...
 
         # YOUR CODE ENDS HERE #
@@ -272,4 +272,3 @@ class CartPoleEnergyBased(Policy):
                 ]
             ]
         )
-

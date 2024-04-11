@@ -238,7 +238,7 @@ The expected behavior of a well-implemented and tuned energy-based controller fo
 
 By observing the system's behavior, you can identify the appropriate time to switch from the energy-based controller to the PD regulator, which is typically when the pole angle becomes relatively small.
 
-In [src/policy.py](./src/policy.py) find the CartPoleEnergyBased class and update it with the appropriate code.
+Once you are ready with inference in [src/policy.py](./src/policy.py) find the `CartPoleEnergyBased` class and update it with the appropriate code.
 
 To initiate the swing-up procedure, use:
 
@@ -251,8 +251,6 @@ Assess your implementation with the following test:
 ```shell
 pytest test.py::test_cartpole_swingup -v --disable-warnings 
 ```
-
-Adhering to these instructions and successfully passing the tests will ensure your homework meets the course standards. Good luck!
 
 ## Submission Guide
 

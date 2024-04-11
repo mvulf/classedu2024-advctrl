@@ -32,9 +32,10 @@ Assignment | Link |
 [lecture 4 vid]: https://dzen.ru/video/watch/66143660abb34d38e299c444
 
 
-
+[seminar 1 material]: regelum.aidynamic.io/
 [seminar 3 material]: https://colab.research.google.com/drive/11spVxpwE0Drfp7I-ajW46_GZ1Zhc2Tvc?usp=sharing
 [seminar 4 material]: https://colab.research.google.com/drive/146gW1YCyW8pX7QQSex9tUJQiksyWdOs5?usp=sharing
 
 [seminar 1 vid]: https://dzen.ru/video/watch/66140aa65fe3d44e1b2a6f64
 [seminar 3 vid]: https://dzen.ru/video/watch/6617e9ff8c9ad95a2d5f9782
+[seminar 4 vid]: https://dzen.ru/video/watch/6618041795246b57316e76fc?share_to=link

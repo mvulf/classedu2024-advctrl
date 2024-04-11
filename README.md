@@ -12,12 +12,14 @@ Lecture | Video | Materials |
 ## Seminars 
 Seminar | Video | Materials | 
 | ----- | ------ | ----- |
-| Seminar 1. Regelum basic principles | [seminar 1 vid] | [seminar 1 slides] |
+| Seminar 1. Regelum basic principles | [seminar 1 vid] | [seminar 1 material]|
+| Seminar 3. Lyapunov stability part 1| [seminar 3 vid] | [seminar 3 material] |
+| Seminar 4. Lyapunov stability part 2| [seminar 4 vid] | [seminar 4 material] |
 
 ## Assignments
 Assignment | Link |
 | ----- | ----- | 
-| Assignment 1. | [HW 1](./homework/hw1/README.md) |
+| Assignment 1. Stabilization of the CartPole system | [HW 1](./homework/hw1/README.md) |
 
 [lecture 1 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-1&branch=master
 [lecture 2 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-2&branch=master
@@ -30,4 +32,9 @@ Assignment | Link |
 [lecture 4 vid]: https://dzen.ru/video/watch/66143660abb34d38e299c444
 
 
+
+[seminar 3 material]: https://colab.research.google.com/drive/11spVxpwE0Drfp7I-ajW46_GZ1Zhc2Tvc?usp=sharing
+[seminar 4 material]: https://colab.research.google.com/drive/146gW1YCyW8pX7QQSex9tUJQiksyWdOs5?usp=sharing
+
 [seminar 1 vid]: https://dzen.ru/video/watch/66140aa65fe3d44e1b2a6f64
+[seminar 3 vid]: https://dzen.ru/video/watch/6617e9ff8c9ad95a2d5f9782

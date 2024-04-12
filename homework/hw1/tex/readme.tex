@@ -60,12 +60,12 @@ with the moment of inertia $\overline{I}_p$ given by $\overline{I}_p  = \frac{4}
 Define the pendulum's energy as:
 
 $$
-E_p =  \frac{\overline{I}_p \omega ^ 2}{2}   + m g l (\cos{\vartheta} - 1)
+E_p =  \frac{\overline{I}_p \omega ^ 2}{2}   + m_p g l (\cos{\vartheta} - 1)
 $$
 Consider the function:
 
 \begin{equation}
-    L = \frac{1}{2}(E_p^2 + ml\lambda v_x ^ 2)
+    L = \frac{1}{2}(E_p^2 + m_p l\lambda v_x ^ 2)
 \end{equation}
 Prove that the $L$ time derivative is: 
 \begin{equation}
@@ -79,11 +79,11 @@ Prove that the $L$ time derivative is:
 By substituting:
 \begin{equation}
 \label{eqn_energy_based_v_x}
-\dot{v}_x = k (E_p \omega \cos \theta - \lambda v_x)
+\dot{v}_x = k (E_p \omega \cos \vartheta - \lambda v_x)
 \end{equation}
 into \eqref{eqn_derivative_lyapunov}, we obtain:
 $$
-\frac{\diff L}{\diff t} = - mlk (E_p\omega \cos \theta  - \lambda v_x)^2 \leq 0,
+\frac{\diff L}{\diff t} = - m_p lk (E_p\omega \cos \vartheta  - \lambda v_x)^2 \leq 0,
 $$
 Find such a value of control variable $F$ that enforces the above condition \eqref{eqn_energy_based_v_x} for $\dot{v}_x$. 
 This will constitute the energy-based control law. Note that $k\in \R$ is a positive constant hyperparameter.

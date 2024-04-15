@@ -6,7 +6,7 @@ import subprocess
 import os
 import pandas as pd
 from regelum import callback
-from src.system import MyCartPole
+from src.system import CartPoleWithFriction
 import numpy as np
 import os
 
@@ -27,13 +27,14 @@ def save_and_assert(assert_condition: bool, test_id: str, weight: int):
 
 
 def test_cartpole_system():
-    system: MyCartPole = callback.detach(MyCartPole)()
+    system: CartPoleWithFriction = callback.detach(CartPoleWithFriction)()
+
     save_and_assert(
         np.allclose(
             system.compute_state_dynamics(
                 None, np.array([[1, 2, 3, 4]]), np.array([[5]])
             ),
-            np.array([[3.0, 4.0, 9.51362395, 3.53952662]]),
+            np.array([[3.0, 4.0, 204.55568414, -237.1184137]]),
         ),
         test_id="test_cartpole_system",
         weight=15,
@@ -48,7 +49,7 @@ def test_cartpole_hold():
         + " "
         + "policy=cartpole_pd "
         + "initial_conditions=cartpole_hold "
-        + "system=cartpole",
+        + "system=cartpole_with_friction",
         shell=True,
     )
     outputs = Path(__file__).parent / "regelum_data" / "outputs"
@@ -78,9 +79,9 @@ def test_cartpole_swingup():
         "python "
         + str(run_py)
         + " "
-        + "policy=cartpole_energy_based "
+        + "policy=cartpole_energy_based_friction_adaptive "
         + "initial_conditions=cartpole_swingup "
-        + "system=cartpole",
+        + "system=cartpole_with_friction",
         shell=True,
     )
     outputs = Path(__file__).parent / "regelum_data" / "outputs"

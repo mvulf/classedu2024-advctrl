@@ -2,6 +2,6 @@ _target_: regelum.simulator.CasADi
 
 system: ~ system
 state_init: $ initial_conditions.state_init
-time_final: 15
+time_final: 20
 max_step: $ common.sampling_time
 

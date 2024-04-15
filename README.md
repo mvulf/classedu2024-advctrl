@@ -21,6 +21,7 @@ Seminar | Video | Materials |
 Assignment | Link |
 | ----- | ----- | 
 | Assignment 1. Stabilization of the CartPole system | [HW 1](./homework/hw1/README.md) |
+| Assignment 2. Adaptive Control | [HW 2](./homework/hw2/README.md) |
 
 [lecture 1 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-1&branch=master
 [lecture 2 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-2&branch=master

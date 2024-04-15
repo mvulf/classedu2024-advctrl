@@ -53,8 +53,19 @@ Lagrange's equations are employed to derive the above expressions \eqref{eqn_sta
 & (m_c + m_p) \dot{v}_x - m_p l \omega^2 \sin \vartheta + \dot{\omega} m_p l \cos \vartheta  + b v_x = F
 \end{eqnarray}
 with the moment of inertia $\overline{I}_p$ given by $\overline{I}_p  = \frac{4}{3}m_p l ^ 2 $.
-
-
+\\
+\\
+The variable correspondences in the code are as follows:
+\begin{itemize}
+    \item $\vartheta=$\texttt{angle}
+    \item $\omega=$\texttt{angle\_vel}
+    \item $v_x=$\texttt{vel}
+    \item $b=$\texttt{friction\_coeff} 
+    \item $m_c=$\texttt{mass\_cart}
+    \item $m_p=$\texttt{mass\_pole}
+    \item $l=$\texttt{length\_pole}
+    \item $g=$\texttt{grav\_const}
+\end{itemize}
 \section*{Exercise 1}
 \subsection*{Theory}
 Define the pendulum's energy as:
@@ -96,12 +107,16 @@ def cartpole_energy_based_control_function_friction_compensation(
 \end{verbatim}
 and implement the function body so that it computes and returns $F_{\text{fr.comp.}}(\vartheta, \omega, v_x, b)$. The variable correspondences in the code are as follows:
 \begin{itemize}
-    \item \texttt{angle}$=\vartheta$
-    \item \texttt{angle\_vel}$=\omega$
-    \item \texttt{vel}$=v_x$
-    \item \texttt{friction\_coeff}$=b$ 
+    \item $\vartheta=$\texttt{angle}
+    \item $\omega=$\texttt{angle\_vel}
+    \item $v_x=$\texttt{vel}
+    \item $b=$\texttt{friction\_coeff} 
     \item $k=$\texttt{self.energy\_gain}
     \item $\lambda=$\texttt{self.velocity\_gain}
+    \item $m_c=$\texttt{mass\_cart}
+    \item $m_p=$\texttt{mass\_pole}
+    \item $l=$\texttt{length\_pole}
+    \item $g=$\texttt{grav\_const}
 \end{itemize}
 
 \section*{Exercise 2}
@@ -138,13 +153,17 @@ and complete its definition to update $\hat{b}$ using the Euler method:
 \begin{equation*}
     \hat{b} := \hat{b} + \alpha B(\vartheta, \omega, v_x) \Delta t
 \end{equation*}
-In the code, variable notation corresponds to:
+The variable correspondences in the code are as follows:
 \begin{itemize}
     \item $\alpha=$\texttt{self.friction\_coeff\_est\_learning\_rate}
     \item $\hat{b} =$\texttt{self.friction\_coeff\_est}
     \item $\Delta t =$\texttt{self.sampling\_time}
     \item $k=$\texttt{self.energy\_gain}
     \item $\lambda=$\texttt{self.velocity\_gain}
+    \item $m_c=$\texttt{mass\_cart}
+    \item $m_p=$\texttt{mass\_pole}
+    \item $l=$\texttt{length\_pole}
+    \item $g=$\texttt{grav\_const}
 \end{itemize}
 
 \newpage
@@ -154,7 +173,7 @@ In the code, variable notation corresponds to:
 
 Consider the inverted pendulum system with friction described by the state dynamics:
 \begin{equation}
-    \label{eqn_state_dynamics}
+    \label{eqn_state_dynamics_inv_pendulum}
     \begin{aligned}
         &\dot{\vartheta} =  \omega \\
         &\dot{\omega} = \frac{g}{l}\sin \vartheta + \frac{M}{ m l ^ 2} - b \omega ^ 2 \sgn (\omega)

@@ -5,8 +5,8 @@ from regelum.system import CartPole
 class CartPoleWithFriction(CartPole):
     _dim_observation = 4
     _dim_state = 4
-    _parameters = {"m_c": 0.1, "m_p": 2.0, "g": 9.81, "l": 0.5, "friction_coeff": 0.1}
-    _action_bounds = [[-300.0, 300.0]]
+    _parameters = {"m_c": 0.1, "m_p": 2.0, "g": 9.81, "l": 0.5, "friction_coeff": 100.0}
+    _action_bounds = [[-600.0, 600.0]]
 
     def _compute_state_dynamics(self, time, state, inputs):
         Dstate = rg.zeros(

@@ -1,4 +1,1 @@
 _target_: src.policy.CartPolePD
-
-action_min: -300
-action_max: 300

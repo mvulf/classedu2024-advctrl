@@ -13,3 +13,4 @@ pytest_output.log
 *.fls
 *.gz
 *.fls
+*.log

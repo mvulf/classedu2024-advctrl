@@ -26,6 +26,12 @@ Place your code between the following markers in the provided files:
 
 For each task, a test is available to verify its successful completion. A task is considered complete if and only if its corresponding test executes without any errors.
 
+### Getting started
+
+Create a virtual environment and run
+```
+pip install -r requirements.txt
+```
 
 ### Task 1: Implementation of the cartpole system with friction (15% of the grade)
 

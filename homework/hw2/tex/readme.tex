@@ -1,0 +1,221 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{cleveref}
+\input{preamble.tex}
+
+\title{Advanced Control Methods 2024. Homework 1. Energy-Based Control for Cartpole System}
+
+
+\begin{document}
+
+\section*{Cartpole system with friction}
+
+The dynamics of the cartpole system with friction are governed by the following set of differential equations:
+
+\begin{equation}
+    \label{eqn_state_dynamics}
+    \begin{aligned}
+        &\dot{\vartheta} =  \omega \\
+        &\dot{x} = v_x \\
+        &\dot{\omega} =  \frac{g \sin{\vartheta}(m_c + m_p) - \cos{\vartheta}(F - b v_x + m_p l \omega^2 \sin{\vartheta})}{\frac{4l}{3}(m_c + m_p) - lm_p \cos^2{\vartheta}}\\
+        &\dot{v}_x = \frac{F - b v_x + m_p l \omega ^2 \sin{\vartheta} - \frac{3}{8}m_p g\sin(2\vartheta)}{m_c + m_p - \frac{3}{4} m_p \cos ^ 2 \vartheta}
+    \end{aligned}
+\end{equation}
+where the variables are defined as follows:
+\begin{itemize}
+\item $\vartheta$: pole turning angle (\textbf{state variable}) [rad]
+\item $x$: x-coordinate of the cart (\textbf{state variable}) [m]
+\item $\omega$: pole angular speed with respect to relative coordinate axes with cart in the origin (\textbf{state variable}) [rad/s]
+\item $v_x$: absolute speed of the cart (\textbf{state variable}) [m/s]
+\item $F$: pushing force (\textbf{control variable}) [N]
+\item $m_c$: mass of the cart [kg]
+\item $m_p$: mass of the pole [kg]
+\item $l$: pole length [m]
+\item $b$: friction coefficient [kg/s]  
+\end{itemize}
+Lagrange's equations are employed to derive the above expressions \eqref{eqn_state_dynamics}:
+
+\begin{eqnarray}
+\label{eqn_sum_moments}
+& \overline{I}_p \dot{\omega} + \dot{v}_x m_p l\cos \vartheta  - m_p g l \sin \vartheta = 0 \\ 
+\label{eqn_2nd_newton_law}
+& (m_c + m_p) \dot{v}_x - m_p l \omega^2 \sin \vartheta + \dot{\omega} m_p l \cos \vartheta  + b v_x = F
+\end{eqnarray}
+with the moment of inertia $\overline{I}_p$ given by $\overline{I}_p  = \frac{4}{3}m_p l ^ 2 $.
+
+
+\section*{Exercise 1}
+\subsection*{Theory}
+Define the pendulum's energy as:
+
+$$
+E_p =  \frac{\overline{I}_p \omega ^ 2}{2}   + m_p g l (\cos{\vartheta} - 1)
+$$
+Consider the function:
+
+\begin{equation}
+    L_1 = \frac{1}{2}(E_p^2 + m_p l\lambda v_x ^ 2),
+\end{equation}
+where $\lambda \in \R_{> 0}$ is a positive constant hyperparameter. 
+Prove that the $L_1$ time derivative is: 
+\begin{multline}
+\label{eqn_derivative_lyapunov}
+\frac{\diff L_1}{\diff t} = - \dot{v}_x m_p l (E_p \omega \cos \vartheta - \lambda v_x) = \\ 
+= -\frac{F - b v_x + m_p l \omega ^2 \sin{\vartheta} - \frac{3}{8}m_p g\sin(2\vartheta)}{m_c + m_p - \frac{3}{4} m_p \cos ^ 2 \vartheta} m_p l (E_p \omega \cos \vartheta - \lambda v_x)
+\end{multline}
+and identify such a control function $F = F_{\text{fr.comp.}}(\vartheta, \omega, v_x, b)$ that ensures 
+$$
+\frac{\diff L_1}{\diff t} = - m_p lk (E_p\omega \cos \vartheta  - \lambda v_x)^2,
+$$
+where $k\in \R_{> 0}$ is a positive constant hyperparameter.
+\\
+\\
+\textbf{Hint.} \textit{You will need equation \eqref{eqn_sum_moments} to derive \eqref{eqn_derivative_lyapunov}.}
+
+\subsection*{Code}
+After determining the control function $F = F_{\text{fr.comp.}}(\vartheta, \omega, v_x, b)$, locate the following function in the code:
+\begin{verbatim}
+def cartpole_energy_based_control_function_friction_compensation(
+    self,
+    angle: float, 
+    angle_vel: float, 
+    vel: float, 
+    friction_coeff: float, 
+) -> float:
+\end{verbatim}
+and implement the function body so that it computes and returns $F_{\text{fr.comp.}}(\vartheta, \omega, v_x, b)$. The variable correspondences in the code are as follows:
+\begin{itemize}
+    \item \texttt{angle}$=\vartheta$
+    \item \texttt{angle\_vel}$=\omega$
+    \item \texttt{vel}$=v_x$
+    \item \texttt{friction\_coeff}$=b$ 
+    \item $k=$\texttt{self.energy\_gain}
+    \item $\lambda=$\texttt{self.velocity\_gain}
+\end{itemize}
+
+\section*{Exercise 2}
+
+\subsection*{Theory}
+Determine the function $B(\vartheta, \omega, v_x)$ such that the time derivative $\frac{\diff L_2}{\diff t}$ of
+$$
+L_2 = \frac{1}{2}\left(E_p^2 + m_p l\lambda v_x ^ 2 + \frac{(\hat{b} - b) ^ 2}{\alpha}\right), \text{ where } \hat{b} = \hat{b}(t) = \hat{b}(0) + \alpha\int_{0}^{t} B(\vartheta, \omega, v_x) d \tau
+$$
+is equal to
+$$
+\frac{\diff L_2}{\diff t} = - m_p lk (E_p\omega \cos \vartheta  - \lambda v_x)^2.
+$$
+This should be valid under the control law given by
+$$
+    F = F_{\text{fr.comp.}}(\vartheta, \omega, v_x, \hat{b})
+$$
+In the above equations, $\hat{b}(0)$ is known and equals zero, and  $\alpha \in \R_{>0}$ is a positive constant hyperparameter.
+\\
+\\
+\textbf{Hint.} \textit{Refer to the appendix for a similar deduction applied to the inverted pendulum system. The appendix should be reviewed with attention for guidance.}  
+
+\subsection*{Code}
+After deriving the function $B(\vartheta, \omega, v_x)$, locate the following function in the code:
+\begin{verbatim}
+def euler_update_friction_coeff_estimate(
+    self,
+    angle: float, 
+    angle_vel: float, 
+    vel: float,
+) -> None:
+\end{verbatim}
+and complete its definition to update $\hat{b}$ using the Euler method:
+\begin{equation*}
+    \hat{b} := \hat{b} + \alpha B(\vartheta, \omega, v_x) \Delta t
+\end{equation*}
+In the code, variable notation corresponds to:
+\begin{itemize}
+    \item $\alpha=$\texttt{self.friction\_coeff\_est\_learning\_rate}
+    \item $\hat{b} =$\texttt{self.friction\_coeff\_est}
+    \item $\Delta t =$\texttt{self.sampling\_time}
+    \item $k=$\texttt{self.energy\_gain}
+    \item $\lambda=$\texttt{self.velocity\_gain}
+\end{itemize}
+
+\newpage
+\section*{Appendix}
+
+\subsection*{Derivation of the Adaptive Controller for Inverted Pendulum System with Friction}
+
+Consider the inverted pendulum system with friction described by the state dynamics:
+\begin{equation}
+    \label{eqn_state_dynamics}
+    \begin{aligned}
+        &\dot{\vartheta} =  \omega \\
+        &\dot{\omega} = \frac{g}{l}\sin \vartheta + \frac{M}{ m l ^ 2} - b \omega ^ 2 \sgn (\omega)
+    \end{aligned}
+\end{equation}
+where
+\begin{itemize}
+    \item $\vartheta$ is the pendulum angle (\textbf{state variable}) [rad]
+    \item $\omega$ is the pendulum angular velocity (\textbf{state variable}) [rad/s]
+    \item $M$ is the pendulum torque (\textbf{control variable}) [kg$\times\text{m} ^ 2$/$\text{s} ^ 2$]  
+    \item $m$ is the pendlum mass [kg]
+    \item $l$ is the pendulum length [m]
+    \item $g$ is the gravity constant [m/$\text{s}^2$]
+    \item $b$ is the friction coefficient [$\text{m} ^ {-2}$] 
+\end{itemize}
+We define the Lyapunov function $L$ as:
+$$
+    L = \frac{1}{2} \left(E^2 + \frac{(\hat{b} - b) ^ 2}{\alpha}\right) 
+$$
+where
+\begin{itemize}
+    \item $E = \frac{m l ^2 \omega ^ 2}{2} + mgl(\cos\vartheta - 1)$ is the energy of the system,
+    \item $\alpha \in \R_{>0}$ is a positive constant hyperparameter, interpreted as a learning rate,
+    \item $\hat{b} = \hat{b}(t)$ is an estimate of the real friction coefficient $b$. The function $\hat{b}$ is derived below, aiming \textbf{to find a control law and estimate for $\hat{b}$ that are independent from the actual value of $b$, while ensuring that $\dot{L} \leq 0$}. 
+\end{itemize}
+The derivative of $L$ is given by:
+$$
+    \dot{L} = E \dot{E} + \frac{\hat{b} - b}{\alpha} \dot{\hat{b}}
+$$
+Examining $\dot{E}$ more closely:
+\begin{multline*}
+    \dot{E} = ml^2 \omega \dot{\omega} - mgl \omega \sin\vartheta  = \omega (mgl \sin \vartheta + M - b ml^2 \omega ^ 2 \sgn(\omega)  - mgl \sin \vartheta) = 
+    \\
+    = M\omega - b ml^2 |\omega| ^ 3
+\end{multline*}
+Hence,
+\begin{multline*}
+    \dot{L} = E (M\omega - b ml^2 |\omega| ^ 3) +  \frac{\hat{b} - b}{\alpha} \dot{\hat{b}} = 
+    \left\{\text{Let us add and subtract} \pm  E\hat{b}ml^2 |\omega| ^ 3\right\} = \\ 
+    = E (\omega M - \hat{b} ml^2 |\omega| ^ 3) + \left(\hat{b} - b\right)\left(E ml^2 |\omega| ^ 3 + \frac{\dot{\hat{b}}}{\alpha} \right)
+\end{multline*}
+By setting:
+\begin{itemize}
+    \item $\dot{\hat{b}} = - \alpha E m l ^ 2 |\omega| ^ 3$, which implies  $\hat{b}(t) = \hat{b}(0) +  \alpha \int_0^t - E m l ^ 2 |\omega| ^ 3 \diff \tau $
+    \item the control law $M = - k \sgn(\omega E) + |\omega|\omega \hat{b} m l ^ 2$  for some positive constant $k \in \R_{> 0}$
+\end{itemize}
+we ensure that:
+$$
+    \dot{L} = - k |w E| \leq 0
+$$
+\subsection*{Important Remark}
+It is straightforward to verify that:
+\begin{equation}
+    \label{eqn_cotrol_law_inv_pendlum_friction_compenstaion}
+    \frac{\diff }{\diff t} \left(\frac{E ^ 2}{2}\right) =  - k |w E| \text{ for }  M = - k \sgn(\omega E) + |\omega|\omega b m l ^ 2
+\end{equation}
+but to practically apply this control law, one must know the true value of the friction coefficient $b$. In contrast, we previously derived an adaptive control law of similar form,
+\begin{equation}
+    \label{eqn_cotrol_law_inv_pendlum_friction_adaptive}
+    M = - k \sgn(\omega E) + |\omega|\omega \hat{b} m l ^ 2.
+\end{equation}
+The only difference between the control laws \eqref{eqn_cotrol_law_inv_pendlum_friction_compenstaion} and \eqref{eqn_cotrol_law_inv_pendlum_friction_adaptive} is the substitution of $b$ with its estimate $\hat{b}(t) =\hat{b}(0) +  \alpha \int_0^t - E m l ^ 2 |\omega| ^ 3 \diff \tau $. \textbf{This estimate can be computed in practice using the Euler scheme, without requiring knowledge of the actual value of the friction coefficient $b$}.
+
+\end{document}

@@ -1,0 +1,4 @@
+_target_: src.policy.CartPoleEnergyBased
+
+action_min: -500
+action_max: 500

@@ -57,7 +57,7 @@ In [`src/policy.py`](./src/policy.py) find the `CartPolePD` class and update it 
 Execute the following command to test the PD regulator setup:
 
 ```shell
-python run.py policy=cartpole_pd initial_conditions=cartpole_hold system=cartpole --interactive --fps=10 
+python run.py policy=cartpole_pd initial_conditions=cartpole_hold system=cartpole_with_friction --interactive --fps=10 
 ```
 
 This should stabilize the cart at the origin (x = 0, x_dot = 0, omega = 0) with the pole upright (vartheta mod 2 pi = 0). Verify your solution with the provided test:
@@ -83,7 +83,7 @@ Once you are ready with inference find the `CartPoleEnergyBasedFrictionAdaptive`
 To initiate the swing-up procedure, use:
 
 ```shell
-python run.py policy=cartpole_energy_based initial_conditions=cartpole_swingup system=cartpole --interactive --fps=10 
+python run.py policy=cartpole_energy_based_friction_adaptive initial_conditions=cartpole_swingup system=cartpole_with_friction --interactive --fps=10
 ```
 
 Assess your implementation with the following test:

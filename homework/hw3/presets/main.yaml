@@ -1,0 +1,15 @@
+defaults:
+  - policy: cartpole_pd
+  - system: cartpole
+  - simulator: casadi
+  - scenario: scenario
+  - common: common
+  - initial_conditions: cartpole_swingup
+
+callbacks:
+  - regelum.callback.ScenarioStepLogger
+  - regelum.callback.HistoricalDataCallback
+
+rehydra:
+  sweep:
+    dir: ${oc.env:REGELUM_DATA_DIR}/outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}

@@ -1,0 +1,4 @@
+_target_: src.policy.CartPoleBackstepping
+
+system: ~ system
+sampling_time: $ common.sampling_time

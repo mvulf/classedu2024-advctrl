@@ -1,0 +1,6 @@
+_target_: src.policy.CartPoleMPC
+
+system: ~ system
+sampling_time: $ common.sampling_time
+optimizer_config: 
+  _target_: regelum.CasadiOptimizerConfig

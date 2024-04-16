@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{cleveref}
+\input{preamble.tex}
+
+\title{Advanced Control Methods 2024. Homework 1. Energy-Based Control for Cartpole System}
+
+
+\begin{document}
+
+\section*{Cartpole system with motor}
+
+The dynamics of the cartpole system with motor are governed by the following set of differential equations:
+
+\begin{equation}
+    \label{eqn_state_dynamics}
+    \begin{aligned}
+        &\dot{\vartheta} =  \omega \\
+        &\dot{x} = v_x \\
+        &\dot{\omega} =  \frac{g \sin{\vartheta}(m_c + m_p) - \cos{\vartheta}(F + m_p l \omega^2 \sin{\vartheta})}{\frac{4l}{3}(m_c + m_p) - lm_p \cos^2{\vartheta}}\\
+        &\dot{v}_x = \frac{F + m_p l \omega ^2 \sin{\vartheta} - \frac{3}{8}m_p g\sin(2\vartheta)}{m_c + m_p - \frac{3}{4} m_p \cos ^ 2 \vartheta} \\
+        &\dot{F} = \frac{1}{\tau}(u - F)
+    \end{aligned}
+\end{equation}
+where the variables are defined as follows:
+\begin{itemize}
+\item $\vartheta$: pole turning angle (\textbf{state variable}) [rad]
+\item $x$: x-coordinate of the cart (\textbf{state variable}) [m]
+\item $\omega$: pole angular speed with respect to relative coordinate axes with cart in the origin (\textbf{state variable}) [rad/s]
+\item $v_x$: absolute speed of the cart (\textbf{state variable}) [m/s]
+\item $F$: pushing force (\textbf{state variable}) [N]
+\item $u$: motor torque (\textbf{control variable}) [N]
+\item $m_c$: mass of the cart [kg]
+\item $m_p$: mass of the pole [kg]
+\item $l$: pole length [m]
+\item $\tau$: motor moment [s]
+\end{itemize}
+Lagrange's equations are employed to derive the first 4 equations in \eqref{eqn_state_dynamics}:
+
+\begin{eqnarray}
+\label{eqn_sum_moments}
+& \overline{I}_p \dot{\omega} + \dot{v}_x m_p l\cos \vartheta  - m_p g l \sin \vartheta = 0 \\ 
+\label{eqn_2nd_newton_law}
+& (m_c + m_p) \dot{v}_x - m_p l \omega^2 \sin \vartheta + \dot{\omega} m_p l \cos \vartheta  = F
+\end{eqnarray}
+with the moment of inertia $\overline{I}_p$ given by $\overline{I}_p  = \frac{4}{3}m_p l ^ 2 $.
+\\
+\\
+The variable correspondences in the code are as follows:
+\begin{itemize}
+    \item $\vartheta=$\texttt{angle}
+    \item $\omega=$\texttt{angle\_vel}
+    \item $v_x=$\texttt{vel}
+    \item $m_c=$\texttt{mass\_cart}
+    \item $m_p=$\texttt{mass\_pole}
+    \item $l=$\texttt{length\_pole}
+    \item $g=$\texttt{grav\_const}
+    \item $\tau=$\texttt{motor\_moment}
+    \item $F=$\texttt{force}
+    \item $u=$\texttt{control\_variable}
+\end{itemize}
+\section*{Exercise 1}
+\subsection*{Theory}
+Define the pendulum's energy as:
+
+$$
+E_p =  \frac{\overline{I}_p \omega ^ 2}{2}   + m_p g l (\cos{\vartheta} - 1)
+$$
+Consider the function:
+
+\begin{equation}
+    L_1 = \frac{1}{2}(E_p^2 + m_p l\lambda v_x ^ 2),
+\end{equation}
+where $\lambda \in \R_{> 0}$ is a positive constant hyperparameter. 
+Prove that the $L_1$ time derivative is: 
+\begin{multline}
+\label{eqn_derivative_lyapunov}
+\frac{\diff L_1}{\diff t} = - \dot{v}_x m_p l (E_p \omega \cos \vartheta - \lambda v_x) = \\ 
+= -\frac{F + m_p l \omega ^2 \sin{\vartheta} - \frac{3}{8}m_p g\sin(2\vartheta)}{m_c + m_p - \frac{3}{4} m_p \cos ^ 2 \vartheta} m_p l (E_p \omega \cos \vartheta - \lambda v_x)
+\end{multline}
+and identify such function $F = F_{\text{en.based.}}(\vartheta, \omega, v_x)$ that ensures 
+$$
+\frac{\diff L_1}{\diff t} = - m_p lk (E_p\omega \cos \vartheta  - \lambda v_x)^2,
+$$
+where $k\in \R_{> 0}$ is a positive constant hyperparameter.
+\\
+\\
+\textbf{Hint.} \textit{You will need equation \eqref{eqn_sum_moments} to derive \eqref{eqn_derivative_lyapunov}.}
+
+\subsection*{Code}
+After determining the function $F =  F_{\text{en.based.}}(\vartheta, \omega, v_x, b)$, locate the following function in the code:
+\begin{verbatim}
+def cartpole_energy_based_force_control_function(
+    self,
+    angle: float, 
+    angle_vel: float, 
+    vel: float, 
+) -> float:
+\end{verbatim}
+and implement the function body so that it computes and returns $F_{\text{en.based.}}(\vartheta, \omega, v_x)$. 
+The variable correspondences in the code are as follows:
+\begin{itemize}
+    \item $\vartheta=$\texttt{angle}
+    \item $\omega=$\texttt{angle\_vel}
+    \item $v_x=$\texttt{vel}
+    \item $k=$\texttt{self.energy\_gain}
+    \item $\lambda=$\texttt{self.velocity\_gain}
+    \item $m_c=$\texttt{mass\_cart}
+    \item $m_p=$\texttt{mass\_pole}
+    \item $l=$\texttt{length\_pole}
+    \item $g=$\texttt{grav\_const}
+\end{itemize}
+
+\section*{Exercise 2}
+
+\subsection*{Theory}
+In this homework $F$ is not our control variable.
+However, we can construct a control law $u(\vartheta, \omega, v_x, F)$ based on $F_{\text{en.based}}(\vartheta, \omega, v_x)$. 
+Using the backstepping control approach, the control law is defined as:
+$$
+u(\vartheta, \omega, v_x, F) = F - b(F - F_{\text{en.based.}}(\vartheta, \omega, v_x)), 
+$$
+where $b \in \R_{> 0}$ is a positive constant hyperparameter.
+
+
+\subsection*{Code}
+Locate the following function definition in the code:
+\begin{verbatim}
+def cartpole_backstepping(
+    self,
+    old_energy_based_force: float,
+    force: float, 
+) -> float:
+\end{verbatim}
+Your task is to implement this function such that it calculates and returns the control law $u(\vartheta, \omega, v_x, F)$.
+
+The variable correspondences in the code are as follows:
+\begin{itemize}
+    \item $b=$\texttt{self.backstepping\_gain}
+    \item $F=$\texttt{force}
+    \item $F_{\text{en.based.}}(\vartheta, \omega, v_x)=$\texttt{old\_energy\_based\_force}
+\end{itemize}
+
+
+\end{document}

@@ -1,0 +1,16 @@
+*.tar.gz
+multirun
+regelum_data
+.python-version
+*__pycache__*
+poetry.lock
+.vscode
+.pytest_cache
+test_results.csv
+pytest_output.log
+*.aux
+*.fdb_latexmk
+*.fls
+*.gz
+*.fls
+*.log

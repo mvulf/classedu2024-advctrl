@@ -1,0 +1,101 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{cleveref}
+\input{preamble.tex}
+
+\title{Advanced Control Methods 2024. Homework 1. Energy-Based Control for Cartpole System}
+
+
+\begin{document}
+
+\section*{Cartpole system}
+
+The dynamics of the cartpole system are governed by the following set of differential equations:
+
+\begin{equation}
+    \label{eqn_state_dynamics}
+    \begin{aligned}
+        &\dot{\vartheta} =  \omega \\
+        &\dot{x} = v_x \\
+        &\dot{\omega} =  \frac{g \sin{\vartheta}(m_c + m_p) - \cos{\vartheta}(F + m_p l \omega^2 \sin{\vartheta})}{\frac{4l}{3}(m_c + m_p) - lm_p \cos^2{\vartheta}}\\
+        &\dot{v}_x = \frac{F + m_p l \omega ^2 \sin{\vartheta} - \frac{3}{8}m_p g\sin(2\vartheta)}{m_c + m_p - \frac{3}{4} m_p \cos ^ 2 \vartheta} \\
+    \end{aligned}
+\end{equation}
+where the variables are defined as follows:
+\begin{itemize}
+\item $\vartheta$: pole turning angle (\textbf{state variable}) [rad]
+\item $x$: x-coordinate of the cart (\textbf{state variable}) [m]
+\item $\omega$: pole angular speed with respect to relative coordinate axes with cart in the origin (\textbf{state variable}) [rad/s]
+\item $v_x$: absolute speed of the cart (\textbf{state variable}) [m/s]
+\item $F$: pushing force (\textbf{control variable}) [N]
+\item $m_c$: mass of the cart [kg]
+\item $m_p$: mass of the pole [kg]
+\item $l$: pole length [m]
+\end{itemize}
+The variable correspondences in the code are as follows:
+\begin{itemize}
+    \item $\vartheta=$\texttt{angle}
+    \item $\omega=$\texttt{angle\_vel}
+    \item $v_x=$\texttt{vel}
+    \item $m_c=$\texttt{mass\_cart}
+    \item $m_p=$\texttt{mass\_pole}
+    \item $l=$\texttt{length\_pole}
+    \item $g=$\texttt{grav\_const}
+    \item $F=$\texttt{force}
+\end{itemize}
+\section*{Exercise 1}
+\subsection*{Theory}
+Model-predictive control algorithm on every time step $t$ solves the following problem
+\begin{equation}
+    \label{eqn_mpc_problem}
+    \sum_{k = 0}^H \cost(\hat{s}_{t+k\cdot \delta t}, a_k) \ra \min_{a_0, \dots, a_H}, 
+\end{equation}
+and then applies the first action $a_0^{\star}$ from the optimized sequence 
+$$
+    (a_0^{\star}, \dots, a_H^{\star}) = \arg\min \sum_{k = 0}^H \cost(\hat{s}_{t+k\cdot \delta t}, a_k)
+$$. 
+In the equation \eqref{eqn_mpc_problem} above:
+\begin{itemize}
+    \item $\delta t$ is the prediction step size, a tunable hyperparameter which may differ from the system's sampling time.
+    \item $\hat{s}_{t+k\cdot \delta t}$ represents the predicted state at the future time step $t+k \cdot \delta t$. 
+    The initial condition is $\hat{s}_{t} = s_t$, where $s_t$ is the current state vector at time $t$. 
+    The state vector is denoted by $s_t = (\vartheta(t), x(t), \omega(t), v_x(t))^T$.
+    The predicted state is calculated using Euler's method: 
+    $$
+    \hat{s}_{t+(k + 1)\cdot \delta t} = \hat{s}_{t+k\cdot \delta t} + \delta t \cdot f(\hat{s}_{t+k\cdot \delta t}, a_k)
+    $$
+    for $k = 0, 1, \ldots, H-1$, where $f$ is the transition function represented by the right-hand side of Equation \ref{eqn_state_dynamics}.
+    \item $H$  is the prediction horizon, another hyperparameter
+    \item $\cost(s, a)$ is the cost function, which is user-defined. 
+    For example, $\cost(s, a) = s^T \operatorname*{diag}(w) s$ with $w$ being the vector of cost weights.
+\end{itemize}
+
+\subsection*{Code}
+Within the code, locate the following function:
+\begin{verbatim}
+def mpc_objective(self, current_state, actions) -> float:
+\end{verbatim}
+Implement the function body to compute and return the sum $\sum_{k = 0}^H \cost(\hat{s}_{t+k\cdot \delta t}, a_k)$. 
+The variable correspondences are:
+\begin{itemize}
+    \item $H=$\texttt{self.prediction\_horizon}
+    \item $a_k=$\texttt{actions[k, :]}
+    \item $f$=\texttt{self.system.\_compute\_state\_dynamics}
+    \item $s_t$=\texttt{current\_state}
+    \item $w=$\texttt{self.cost\_weights}
+    \item $\cost(s, a)=$\texttt{rg.sum(current\_state**2 * cost\_weights)}
+    \item $\delta t=$\texttt{self.pred\_step\_size} 
+\end{itemize}
+
+\end{document}

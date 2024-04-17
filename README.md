@@ -16,7 +16,7 @@ Seminar | Video | Materials |
 | Seminar 1. Regelum basic principles | [seminar 1 vid] | [seminar 1 material]|
 | Seminar 3. Lyapunov stability part 1| [seminar 3 vid] | [seminar 3 material] |
 | Seminar 4. Lyapunov stability part 2| [seminar 4 vid] | [seminar 4 material] |
-| Seminar 4. Introduction to practical methods in stabilization| [seminar 5 vid] | [seminar 5 material] |
+| Seminar 5. Introduction to practical methods in stabilization| [seminar 5 vid] | [seminar 5 material] |
 
 ## Assignments
 Assignment | Link |

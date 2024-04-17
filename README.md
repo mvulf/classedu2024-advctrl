@@ -44,7 +44,7 @@ Assignment | Link |
 
 
 [seminar 1 material]: https://regelum.aidynamic.io/
-[seminar 2 slides]: 
+[seminar 2 slides]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/blob?file=seminars%2FSem1acm_student.pdf&branch=master
 [seminar 3 material]: https://colab.research.google.com/drive/11spVxpwE0Drfp7I-ajW46_GZ1Zhc2Tvc?usp=sharing
 [seminar 4 material]: https://colab.research.google.com/drive/146gW1YCyW8pX7QQSex9tUJQiksyWdOs5?usp=sharing
 [seminar 5 material]: https://colab.research.google.com/drive/1AiIf44B1y3LcTWQFZ0VM6LutmbUgB6FL?usp=sharing

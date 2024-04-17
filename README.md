@@ -15,6 +15,7 @@ Lecture | Video | Materials |
 Seminar | Video | Materials | 
 | ----- | ------ | ----- |
 | Seminar 1. Regelum basic principles | [seminar 1 vid] | [seminar 1 material]|
+| Seminar 2. Terminology | N/A | [seminar 2 slides] |
 | Seminar 3. Lyapunov stability part 1| [seminar 3 vid] | [seminar 3 material] |
 | Seminar 4. Lyapunov stability part 2| [seminar 4 vid] | [seminar 4 material] |
 | Seminar 5. Introduction to practical methods in stabilization| [seminar 5 vid] | [seminar 5 material] |
@@ -43,6 +44,7 @@ Assignment | Link |
 
 
 [seminar 1 material]: https://regelum.aidynamic.io/
+[seminar 2 slides]: 
 [seminar 3 material]: https://colab.research.google.com/drive/11spVxpwE0Drfp7I-ajW46_GZ1Zhc2Tvc?usp=sharing
 [seminar 4 material]: https://colab.research.google.com/drive/146gW1YCyW8pX7QQSex9tUJQiksyWdOs5?usp=sharing
 [seminar 5 material]: https://colab.research.google.com/drive/1AiIf44B1y3LcTWQFZ0VM6LutmbUgB6FL?usp=sharing

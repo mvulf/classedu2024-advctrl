@@ -42,7 +42,7 @@ Study the code, try to understand the insights of how everything is implemented 
 Before installing the requirements, it is recommended to create a virtual environment for your project. And then run
 
 ```shell
-git clone https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl
+git clone https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl.git
 cd homework/hw1
 pip install -r requirements.txt
 code .

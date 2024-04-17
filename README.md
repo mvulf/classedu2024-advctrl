@@ -9,6 +9,7 @@ Lecture | Video | Materials |
 | Lecture 3. Adaptive control basics | [lecture 3 vid] | [lecture 3 notes] |
 | Lecture 4. Basics of backstepping. Part 1| [lecture 4 vid] | [lecture 4 notes] |
 | Lecture 5. Basics of backstepping. part 2| [lecture 5 vid] | [lecture 5 notes] |
+| Lecture 6. Elements of Robustness and fault-tolerant control | [lecture 6 vid] | [lecture 6 notes] |
 
 ## Seminars 
 Seminar | Video | Materials | 
@@ -37,6 +38,7 @@ Assignment | Link |
 [lecture 3 vid]: https://dzen.ru/video/watch/660d37aa11e7b24e9e284f4a
 [lecture 4 vid]: https://dzen.ru/video/watch/66143660abb34d38e299c444
 [lecture 5 vid]: https://dzen.ru/video/watch/661809ed2b574d72fb48a57a?share_to=link
+[lecture 6 vid]: https://dzen.ru/video/watch/6620006c1ebd8259f0b91b91
 
 
 [seminar 1 material]: https://regelum.aidynamic.io/

@@ -10,6 +10,7 @@ Lecture | Video | Materials |
 | Lecture 4. Basics of backstepping. Part 1| [lecture 4 vid] | [lecture 4 notes] |
 | Lecture 5. Basics of backstepping. part 2| [lecture 5 vid] | [lecture 5 notes] |
 | Lecture 6. Elements of Robustness and fault-tolerant control | [lecture 6 vid] | [lecture 6 notes] |
+| Lecture 7. Introduction to model-predictive control (MPC) | [lecture 7 vid] | [lecture 7 notes] |
 
 ## Seminars 
 Seminar | Video | Materials | 

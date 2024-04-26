@@ -11,6 +11,8 @@ Lecture | Video | Materials |
 | Lecture 5. Basics of backstepping. part 2| [lecture 5 vid] | [lecture 5 notes] |
 | Lecture 6. Elements of Robustness and fault-tolerant control | [lecture 6 vid] | [lecture 6 notes] |
 | Lecture 7. Introduction to model-predictive control (MPC) | [lecture 7 vid] | [lecture 7 notes] |
+| Lecture 8. Stabilization via model-predictive control (MPC) | [lecture 8 vid] | [lecture 8 notes] |
+
 
 ## Seminars 
 Seminar | Video | Materials | 
@@ -38,6 +40,7 @@ Assignment | Link |
 [lecture 5 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-5&branch=master
 [lecture 6 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-6&branch=master
 [lecture 7 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-7&branch=master
+[lecture 8 notes]:
 
 [lecture 1 vid]: https://dzen.ru/video/watch/660a9f59f6a00f699fba946a
 [lecture 2 vid]: https://dzen.ru/video/watch/660cba638529120e745a479c
@@ -46,7 +49,7 @@ Assignment | Link |
 [lecture 5 vid]: https://dzen.ru/video/watch/661809ed2b574d72fb48a57a?share_to=link
 [lecture 6 vid]: https://dzen.ru/video/watch/6620006c1ebd8259f0b91b91
 [lecture 7 vid]: https://dzen.ru/video/watch/66295f6a8559c23f2fb188ab
-
+[lecture 8 vid]: https://dzen.ru/video/watch/662b705066994836ab0f83b2
 
 [seminar 1 material]: https://regelum.aidynamic.io/
 [seminar 2 slides]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/blob?file=seminars%2FSem1acm_student.pdf&branch=master

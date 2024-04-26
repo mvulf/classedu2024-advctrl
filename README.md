@@ -40,7 +40,7 @@ Assignment | Link |
 [lecture 5 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-5&branch=master
 [lecture 6 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-6&branch=master
 [lecture 7 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-7&branch=master
-[lecture 8 notes]:
+[lecture 8 notes]: https://gitflic.ru/project/aidynamicaction/classedu2024-advctrl/file?file=lectures%2Flec-8&branch=master
 
 [lecture 1 vid]: https://dzen.ru/video/watch/660a9f59f6a00f699fba946a
 [lecture 2 vid]: https://dzen.ru/video/watch/660cba638529120e745a479c

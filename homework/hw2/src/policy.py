@@ -38,9 +38,20 @@ class CartPolePD(Policy):
         #########################
         ## YOUR CODE GOES HERE ##
 
+        P_angle = 3.2e3
+        D_angle = 1.8e2
+        
+        P_position = 4.2e2
+        D_position = 2.8e2
+
         ## Find the coefficients of the PD controller
         ## It should be a list of 4 elements
-        self.pd_coefs: list[float] = ...
+        self.pd_coefs: list[float] = [
+            P_angle,
+            P_position,
+            D_angle,
+            D_position
+        ]
 
         ## YOUR CODE ENDS HERE ##
         #########################

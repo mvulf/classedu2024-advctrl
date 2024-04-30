@@ -32,10 +32,26 @@ class CartPoleWithFriction(CartPole):
         #########################
         ## YOUR CODE GOES HERE ##
 
-        Dstate[0] = ...
-        Dstate[1] = ...
-        Dstate[2] = ...
-        Dstate[3] = ...
+        force_part = (
+            force
+            - friction_coeff*vel
+            + mass_pole*length_pole*angle_vel**2*sin_angle
+        )
+
+        Dstate[0] = angle_vel
+        Dstate[1] = vel
+        Dstate[2] = (
+            grav_const*sin_angle*(mass_cart + mass_pole)
+            - cos_angle*force_part
+        )/(
+            4/3*length_pole*(mass_cart + mass_pole)
+            - mass_pole*length_pole*cos_angle**2
+        )
+        Dstate[3] = (
+            force_part - 3/8 * mass_pole * grav_const * rg.sin(2*angle)
+        )/(
+            mass_cart + mass_pole - 3/4 * mass_pole * cos_angle**2
+        )
 
         ## YOUR CODE ENDS HERE ##
         #########################

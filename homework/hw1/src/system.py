@@ -80,12 +80,30 @@ class MyCartPole(CartPole):
         #########################
         ## YOUR CODE GOES HERE ##
 
-        ...
+        # # CLASSIC ROTATION
+        # Dstate[0] = theta_dot # theta dot = omega
+        # Dstate[1] = x_dot # x_dot = v_x
+        # Dstate[2] = (
+        #     g*sin_theta*(m_c + m_p) +\
+        #         cos_theta*(Force - m_p*l*theta_dot**2*sin_theta)
+        # )/(
+        #     4/3*l*(m_c + m_p) - l*m_p*cos_theta**2
+        # )
+        # Dstate[3] = (
+        #     Force + m_p*l*(-theta_dot**2*sin_theta + Dstate[2]*cos_theta)
+        # )/(m_c + m_p)
 
-        Dstate[0] = ...
-        Dstate[1] = ...
-        Dstate[2] = ...
-        Dstate[3] = ...
+        Dstate[0] = theta_dot # theta dot = omega
+        Dstate[1] = x_dot # x_dot = v_x
+        Dstate[2] = (
+            g*sin_theta*(m_c + m_p) -\
+                cos_theta*(Force + m_p*l*theta_dot**2*sin_theta)
+        )/(
+            4/3*l*(m_c + m_p) - l*m_p*cos_theta**2
+        )
+        Dstate[3] = (
+            Force + m_p*l*(theta_dot**2*sin_theta - Dstate[2]*cos_theta)
+        )/(m_c + m_p)
 
         ## YOUR CODE ENDS HERE ##
         #########################

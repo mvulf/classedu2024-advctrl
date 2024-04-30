@@ -184,7 +184,21 @@ class CartPolePD(Policy):
 
         ## Find the coefficients of the PD controller
         ## It should be a list of 4 elements
-        self.pd_coefs = ...
+        # P_x = 1e-3
+        # D_x = 1e-4
+        
+        # P_theta = 1.0
+        # D_theta = 1e-3
+        
+        P_x = 1.1
+        D_x = 1
+        
+        P_theta = 30
+        D_theta = 2
+        
+        self.pd_coefs = np.array(
+            [P_theta, P_x, D_theta, D_x]
+        )
 
         ## YOUR CODE ENDS HERE ##
         #########################
@@ -233,6 +247,20 @@ class CartPoleEnergyBased(Policy):
 
         # self.hyperparameter1 = ...
         # self.hyperparameter2 = ...
+        self.lambda_ = 4.0
+        self.k_ = 1.
+        
+        P_x = 3.5
+        D_x = 4.5
+        
+        P_theta = 80
+        D_theta = 4
+        
+        self.pd_coefs = np.array(
+            [P_theta, P_x, D_theta, D_x]
+        )
+        
+        # self.PD_regulator = CartPolePD(action_min, action_max)
 
         ## YOUR CODE ENDS HERE ##
         #########################
@@ -253,10 +281,41 @@ class CartPoleEnergyBased(Policy):
 
         ########################
         # YOUR CODE GOES HERE #
+        x = observation[0, 1]
 
-        ...
+        I_p = 4/3 * m_p * l**2
 
-        action = ...
+        energy = 1/2 * I_p * omega**2 + m_p*g*l*(cos_theta - 1)
+
+        vel_x_dot = self.k_*(energy*omega*cos_theta - self.lambda_*vel)
+
+        action = (
+            vel_x_dot*(m_c + m_p*(1 - 3/4 * cos_theta**2))
+            - m_p*l*omega**2*sin_theta
+            + 3/4 * m_p * g * sin_theta * cos_theta
+        )
+        
+        # pd_action = self.PD_regulator.get_action(observation)
+        # omega = observation[0, 2]
+        # theta = observation[0, 0]
+        # theta = np.arctan2(np.sin(theta), np.cos(theta))
+
+        x_clipped = np.clip(x, -1.0, 1.0)
+        vel_clipped = np.clip(vel, -1.0, 1.0)
+
+        pd_action = (
+            np.sin(theta) * self.pd_coefs[0]
+            + x_clipped * self.pd_coefs[1]
+            + omega * self.pd_coefs[2]
+            + vel_clipped * self.pd_coefs[3]
+        )
+        
+        action = soft_switch(
+            signal1=action,
+            signal2=pd_action,
+            gate=np.cos(theta),
+            loc=np.cos(np.pi / 4),
+        )
 
         # YOUR CODE ENDS HERE #
         #######################

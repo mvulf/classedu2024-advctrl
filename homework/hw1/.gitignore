@@ -8,3 +8,4 @@ poetry.lock
 .pytest_cache
 test_results.csv
 pytest_output.log
+regelum_data

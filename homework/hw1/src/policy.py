@@ -250,11 +250,11 @@ class CartPoleEnergyBased(Policy):
         self.lambda_ = 4.0
         self.k_ = 1.
         
-        P_x = 3.5
-        D_x = 4.5
+        P_x = 4.0
+        D_x = 5.0
         
-        P_theta = 80
-        D_theta = 4
+        P_theta = 90
+        D_theta = 5
         
         self.pd_coefs = np.array(
             [P_theta, P_x, D_theta, D_x]
@@ -289,11 +289,15 @@ class CartPoleEnergyBased(Policy):
 
         vel_x_dot = self.k_*(energy*omega*cos_theta - self.lambda_*vel)
 
-        action = (
-            vel_x_dot*(m_c + m_p*(1 - 3/4 * cos_theta**2))
-            - m_p*l*omega**2*sin_theta
-            + 3/4 * m_p * g * sin_theta * cos_theta
-        )
+        if (theta == np.pi) and (omega == 0):
+            # Make force if theta equals to pi and now angular velocity
+            action = 100
+        else:
+            action = (
+                vel_x_dot*(m_c + m_p*(1 - 3/4 * cos_theta**2))
+                - m_p*l*omega**2*sin_theta
+                + 3/4 * m_p * g * sin_theta * cos_theta
+            )
         
         # pd_action = self.PD_regulator.get_action(observation)
         # omega = observation[0, 2]

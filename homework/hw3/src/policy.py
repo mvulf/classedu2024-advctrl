@@ -73,16 +73,22 @@ class CartPoleBackstepping(Policy):
 
         #########################
         ## YOUR CODE GOES HERE ##
+        
+        P_angle = 50
+        D_angle = 7
+        
+        P_position = 5.0
+        D_position = 3.0
 
         ## Define hyperparameters
-        self.backstepping_gain: float = ...
-        self.energy_gain: float = ...
-        self.velocity_gain: float = ...
+        self.backstepping_gain: float = 2.
+        self.energy_gain: float = 4.
+        self.velocity_gain: float = 2.
         self.pd_coefs: list[float] = [
-            ...,
-            ...,
-            ...,
-            ...,
+            P_angle,
+            P_position,
+            D_angle,
+            D_position,
         ]  # for hard or soft switch, (should be a list of 4 elements)
 
         ## YOUR CODE ENDS HERE ##
@@ -101,9 +107,30 @@ class CartPoleBackstepping(Policy):
 
         #########################
         ## YOUR CODE GOES HERE ##
-        ...
+        
+        cos_angle = np.cos(angle)
+        sin_angle = np.sin(angle)
+        sin_2angle = np.sin(2*angle)
+        
+        pole_inertia = 4/3 * mass_pole * length_pole**2
 
-        force = ...
+        effective_masses = mass_cart + mass_pole - 3/4*mass_pole*cos_angle**2
+        
+        pole_energy = (
+            1/2 * pole_inertia * angle_vel**2
+            + mass_pole*grav_const*length_pole*(cos_angle - 1)
+        )
+
+        total_energy = (
+            pole_energy*angle_vel*cos_angle
+            - self.velocity_gain*vel
+        )
+
+        force = (
+            self.energy_gain*effective_masses*total_energy
+            + 3/8*mass_pole*grav_const*sin_2angle
+            - mass_pole*length_pole*angle_vel**2*sin_angle
+        )
 
         ## YOUR CODE ENDS HERE ##
         #########################
@@ -142,8 +169,14 @@ class CartPoleBackstepping(Policy):
         #########################
         ## YOUR CODE GOES HERE ##
 
+        angle=observation[0, 0]
+        
         # Implement hard or soft switch to PD regulator here
-        action = ...
+        action = (
+            pd_action 
+            if np.cos(angle) > np.cos(np.pi / 8) 
+            else backstepping_action
+        )
 
         ## YOUR CODE ENDS HERE ##
         #########################

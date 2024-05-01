@@ -19,18 +19,23 @@ class CartPoleMPC(Policy):
 
         #########################
         ## YOUR CODE GOES HERE ##
+        
+        w_angle = 30.
+        w_position = 14.
+        w_angle_vel = 3.
+        w_vel = 3.
 
         ## Define hyperparameters
-        self.pred_step_size: float = ...
+        self.pred_step_size: float = 5*sampling_time
         self.cost_weights = np.array(
             [
-                ...,
-                ...,
-                ...,
-                ...,
+                w_angle,
+                w_position,
+                w_angle_vel,
+                w_vel,
             ]
         )
-        self.prediction_horizon: int = ...
+        self.prediction_horizon: int = 15
         ## YOUR CODE ENDS HERE ##
         #########################
 
@@ -66,7 +71,18 @@ class CartPoleMPC(Policy):
         for k in range(self.prediction_horizon + 1):
             #########################
             ## YOUR CODE GOES HERE #
-            ...
+            # time - uses only for the convention satisfaction
+            time = k*self.pred_step_size
+            # Predict state
+            state += (
+                self.pred_step_size*self.system._compute_state_dynamics(
+                    time=time,
+                    state=state,
+                    inputs=actions[k, :]
+                )
+            )
+            # Add running cost to sum of costs
+            sum_costs += rg.sum(state**2 * cost_weights)
 
             ## YOUR CODE ENDS HERE ##
             #########################

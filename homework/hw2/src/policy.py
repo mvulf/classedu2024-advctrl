@@ -78,15 +78,21 @@ class CartPoleEnergyBasedFrictionAdaptive(Policy):
         ## YOUR CODE GOES HERE ##
 
         ## Define hyperparameters
+        
+        P_angle = 3.2e3
+        D_angle = 1.8e2
+        
+        P_position = 4.2e2
+        D_position = 2.8e2
 
-        self.energy_gain: float = ...
-        self.velocity_gain: float = ...
-        self.friction_coeff_est_learning_rate: float = ...
+        self.energy_gain: float = 4.
+        self.velocity_gain: float = 1.
+        self.friction_coeff_est_learning_rate: float = 2.
         self.pd_coefs: list[float] = [
-            ...,
-            ...,
-            ...,
-            ...,
+            P_angle,
+            P_position,
+            D_angle,
+            D_position
         ]  # for hard or soft switch, (should be a list of 4 elements)
 
         ## YOUR CODE ENDS HERE ##
@@ -107,7 +113,30 @@ class CartPoleEnergyBasedFrictionAdaptive(Policy):
         #########################
         ## YOUR CODE GOES HERE ##
 
-        force = ...
+        cos_angle = np.cos(angle)
+        sin_angle = np.sin(angle)
+        sin_2angle = np.sin(2*angle)
+        
+        pole_inertia = 4/3 * mass_pole * length_pole**2
+
+        effective_masses = mass_cart + mass_pole - 3/4*mass_pole*cos_angle**2
+        
+        pole_energy = (
+            1/2 * pole_inertia * angle_vel**2
+            + mass_pole*grav_const*length_pole*(cos_angle - 1)
+        )
+
+        total_energy = (
+            pole_energy*angle_vel*cos_angle
+            - self.velocity_gain*vel
+        )
+
+        force = (
+            self.energy_gain*effective_masses*total_energy
+            + 3/8*mass_pole*grav_const*sin_2angle
+            - mass_pole*length_pole*angle_vel**2*sin_angle
+            + friction_coeff*vel
+        )
 
         ## YOUR CODE ENDS HERE ##
         #########################
@@ -127,8 +156,34 @@ class CartPoleEnergyBasedFrictionAdaptive(Policy):
 
         #########################
         ## YOUR CODE GOES HERE ##
+        
+        cos_angle = np.cos(angle)
+        sin_angle = np.sin(angle)
+        sin_2angle = np.sin(2*angle)
+        
+        pole_inertia = 4/3 * mass_pole * length_pole**2
 
-        self.friction_coeff_est = ...
+        effective_masses = mass_cart + mass_pole - 3/4*mass_pole*cos_angle**2
+        
+        pole_energy = (
+            1/2 * pole_inertia * angle_vel**2
+            + mass_pole*grav_const*length_pole*(cos_angle - 1)
+        )
+
+        total_energy = (
+            pole_energy*angle_vel*cos_angle
+            - self.velocity_gain*vel
+        )
+
+        friction_coeff_est_derivative = (
+            mass_pole*length_pole*total_energy*vel/effective_masses
+        )
+
+        self.friction_coeff_est += (
+            self.friction_coeff_est_learning_rate
+            * friction_coeff_est_derivative
+            * self.sampling_time
+        )
 
         ## YOUR CODE ENDS HERE ##
         #########################
@@ -154,8 +209,16 @@ class CartPoleEnergyBasedFrictionAdaptive(Policy):
         #########################
         ## YOUR CODE GOES HERE ##
 
+        angle=observation[0, 0]
+        
+        # action = energy_based_action
+        
         # Implement hard or soft switch to PD regulator here
-        action = ...
+        action = hard_switch(
+            action1=pd_action,
+            action2=energy_based_action,
+            condition=(np.cos(angle) > np.cos(np.pi / 8))
+        )
 
         ## YOUR CODE ENDS HERE ##
         #########################
